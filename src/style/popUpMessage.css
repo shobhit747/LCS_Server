@@ -1,0 +1,32 @@
+header .popUpMessage{
+    /* display: flex; */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    padding: 5px 8px 4px 8px;
+    width: 28px;
+    max-width: 70vw;
+    /* max-width: 70vw; */
+    /* background-color: red; */
+    color: White;
+    border-radius: 28px;
+    gap: 10px;
+    display: none;
+    transition: .2s;
+    /* opacity: 0; */
+    scale: 0;
+}
+header .popUpMessageSvg svg{
+    margin-top: .5px;
+    background-color: transparent;
+}
+header .popUpMessageSvg{
+    background-color: transparent;
+}
+header .popUpMessage p{
+    background-color: transparent;
+    padding: 5px 8px 4px 0;
+    display: none;
+    opacity: 0;
+    transition: .1s;
+}

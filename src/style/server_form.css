@@ -1,0 +1,23 @@
+.createServerForm{
+    width: 50%;
+    justify-self: center;
+    margin: 12vh auto 0 auto;
+
+}
+
+.createServerForm .createServerFormHeading{
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.createServerForm form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-self: center;
+    width: min-content;
+    /* font-size: 14px; */
+}
+/* .createServerForm form .button_style_one{
+    margin-top: 40px;
+} */

@@ -1,0 +1,29 @@
+header{
+    padding: 15px 0;
+    border-bottom: 1px solid #6666;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+header .title_box{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    justify-items: center;
+    width: fit-content;
+}
+
+header .title_box .title{
+    font-size: 18px;
+    padding: 9px 9px 9px 0;
+}
+header .title_box .lcs_server{
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 1px solid #6666;
+    border-radius: 40px;
+}

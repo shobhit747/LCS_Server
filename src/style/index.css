@@ -1,0 +1,25 @@
+@font-face {
+  font-family: Martian-Mono;
+  src: url(../font/MartianMono_SemiExpanded-Regular.ttf);
+}
+*{
+  padding: 0;
+  margin: 0;
+  font-family: Martian-Mono;
+  color: white;
+  background-color: #131212;
+}
+body {
+  /* padding: 0 50px; */
+  margin-top: 30px;
+}
+.mainSection{
+  width: 100%;
+  height: calc(100vh - 102px);
+  top: 102px;
+  position: absolute;
+}
+
+button,button p,button svg{
+  cursor: pointer;
+}

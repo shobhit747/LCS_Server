@@ -1,0 +1,72 @@
+.start_create_server{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 50%;
+    justify-self: center;
+    margin-top: 15vh;
+}
+.start_create_server .divide{
+    display: flex;
+    flex-direction: row;
+}
+.start_create_server .divide hr{
+    width: 45%;
+    border-top: 1px solid #6666;
+    border-bottom: 0px;
+    padding: 0;
+    height: 0;
+    margin-top: 20px;
+}
+.start_create_server .divide p{
+    padding: 10px;
+}
+.start_create_server .p-1{
+    font-size: 28px;
+}
+.start_create_server .p-2{
+    font-size: 18px;
+}
+
+.start_create_server button{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    padding: 5px 20px;
+    justify-self: center;
+    margin: auto;
+    background-color: transparent;
+}
+.start_create_server button p{
+    background-color: transparent;
+    padding: 10px 20px 10px 0;
+}
+.start_create_server .start_server{
+    border: 5px solid #7A306C;
+    border-radius: 30px;
+}
+.start_create_server .start_server svg{
+    background-color: transparent;
+}
+.start_create_server .start_server svg path{
+    fill: #DCDCDC;
+    stroke: #DCDCDC;
+}
+
+.start_create_server .create_server{
+    border: 5px solid #F9589B;
+    border-radius: 30px;
+}
+.start_create_server button:hover{
+    background-color: #2A1920;
+}
+
+/* .start_create_server .p-1,.start_server,.divide{
+    display: none !important;
+
+}
+.start_create_server .p-2{
+    font-size: 28px;
+    margin-top: 15vh;
+} */

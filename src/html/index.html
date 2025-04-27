@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>LCS Server</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style/index.css" />
+    <link rel="stylesheet" href="../style/title_bar.css" />
+    <link rel="stylesheet" href="../style/header.css" />
+    <link rel="stylesheet" href="../style/start_or_create.css" />
+    <link rel="stylesheet" href="../style/server_form.css" />
+    <link rel="stylesheet" href="../style/button_style_one.css" />
+    <link rel="stylesheet" href="../style/button_style_two.css" />
+    <link rel="stylesheet" href="../style/inputStyleOne.css" />
+    <link rel="stylesheet" href="../style/popUpMessage.css" />
+    <link rel="stylesheet" href="../style/dashboard.css" />
+    <link rel="stylesheet" href="../style/informationStyle.css" />
+
+    <!-- Scripts -->
+    <script defer src="../render.js"></script>
+    <script defer src="../handleClicks.js"></script>
+    <script defer src="../ipcCallback.js"></script>
+  </head>
+  <body>
+    <div id="titleBar">
+      <div id="titleBarButtons"></div>
+    </div>
+    <header id="header">
+        <div class="title_box">
+          <p class="title">LCS SYSTEM</p>
+          <p class="lcs_server">SERVER</p>
+        </div>
+        <div class="popUpMessage" id="popUpMessage">
+          <div id="popUpMessageSvg" class="popUpMessageSvg">
+            <svg width="28" height="28" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.0002 24.0833C17.4016 24.0833 17.7382 23.9473 18.0102 23.6753C18.2822 23.4033 18.4178 23.067 18.4168 22.6666C18.4159 22.2661 18.2799 21.9299 18.0088 21.6579C17.7378 21.3859 17.4016 21.2499 17.0002 21.2499C16.5988 21.2499 16.2626 21.3859 15.9915 21.6579C15.7204 21.9299 15.5844 22.2661 15.5835 22.6666C15.5826 23.067 15.7186 23.4037 15.9915 23.6767C16.2644 23.9496 16.6007 24.0851 17.0002 24.0833ZM15.5835 18.4166H18.4168V9.91659H15.5835V18.4166ZM17.0002 31.1666C15.0404 31.1666 13.1988 30.7945 11.4752 30.0503C9.75155 29.306 8.25225 28.2969 6.97725 27.0228C5.70225 25.7488 4.69311 24.2495 3.94983 22.5249C3.20655 20.8004 2.83444 18.9587 2.8335 16.9999C2.83255 15.0411 3.20466 13.1995 3.94983 11.4749C4.695 9.75036 5.70414 8.25106 6.97725 6.977C8.25036 5.70295 9.74967 4.69381 11.4752 3.94959C13.2007 3.20536 15.0423 2.83325 17.0002 2.83325C18.958 2.83325 20.7997 3.20536 22.5252 3.94959C24.2507 4.69381 25.75 5.70295 27.0231 6.977C28.2962 8.25106 29.3058 9.75036 30.0519 11.4749C30.798 13.1995 31.1697 15.0411 31.1668 16.9999C31.164 18.9587 30.7919 20.8004 30.0505 22.5249C29.3091 24.2495 28.3 25.7488 27.0231 27.0228C25.7462 28.2969 24.2469 29.3065 22.5252 30.0517C20.8034 30.7968 18.9618 31.1685 17.0002 31.1666Z" fill="white"/>
+            </svg>            
+          </div>
+          <p id="popUpMessageMsg"></p>
+        </div>
+        <button class="shutdown" id="shutdown">
+          <p>Shut Down</p>
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.0802 7.25333L20.1468 9.18667C21.3216 9.89419 22.2937 10.8932 22.9688 12.087C23.644 13.2807 23.9992 14.6286 24.0002 16C24.0002 18.1217 23.1573 20.1566 21.657 21.6569C20.1567 23.1571 18.1219 24 16.0002 24C13.8784 24 11.8436 23.1571 10.3433 21.6569C8.84302 20.1566 8.00017 18.1217 8.00017 16C8.00017 13.1067 9.54683 10.5867 11.8402 9.17333L9.92017 7.25333C8.50395 8.23031 7.34647 9.53693 6.54745 11.0606C5.74843 12.5844 5.33181 14.2795 5.3335 16C5.3335 18.829 6.45731 21.5421 8.4577 23.5425C10.4581 25.5429 13.1712 26.6667 16.0002 26.6667C18.8291 26.6667 21.5423 25.5429 23.5426 23.5425C25.543 21.5421 26.6668 18.829 26.6668 16C26.6668 12.3733 24.8535 9.17333 22.0802 7.25333ZM17.3335 4H14.6668V17.3333H17.3335" fill="white"/>
+          </svg>  
+        </button>
+    </header>
+    <section class="mainSection" id="mainSection"></section>
+  </body>
+</html>

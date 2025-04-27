@@ -1,0 +1,35 @@
+.button_style_one{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    padding: 10px 20px;
+    justify-self: center;
+    margin: auto;
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    color: black;
+    transition: .1s linear;
+    gap: 10px;
+}
+.button_style_one p{
+    /* padding: auto; */
+    /* justify-self: center; */
+    background-color: transparent;
+    color: black;
+    margin: auto ;
+}
+.button_style_one:hover,.button_style_one:hover p{
+    background-color: transparent;
+    color: #fff;
+}
+.button_style_one svg{
+    background-color: transparent;
+}
+.button_style_one svg path{
+    fill: black;
+}
+.button_style_one:hover svg path{
+    fill: #fff;
+}

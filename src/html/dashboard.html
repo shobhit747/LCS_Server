@@ -1,0 +1,64 @@
+<div class="dashboard" id="dashboard">
+<div class="left">
+    <div class="top">
+        <div class="pathAndChangeRoot">
+            <div class="InformationStyle" id="">
+                <p class="p-1">Path</p>
+                <p class="p-2">:</p>
+                <p class="p-3" id="currentPath">root/</p>
+                <button class="button_style_one" id="backDir">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.66677 9.16672L3.01869 9.8148L2.37061 9.16672L3.01869 8.51864L3.66677 9.16672ZM19.2501 16.5001C19.2501 16.7432 19.1535 16.9763 18.9816 17.1482C18.8097 17.3201 18.5766 17.4167 18.3334 17.4167C18.0903 17.4167 17.8572 17.3201 17.6853 17.1482C17.5133 16.9763 17.4168 16.7432 17.4168 16.5001H19.2501ZM7.60202 14.3981L3.01869 9.8148L4.31486 8.51864L8.89819 13.102L7.60202 14.3981ZM3.01869 8.51864L7.60202 3.9353L8.89819 5.23147L4.31486 9.8148L3.01869 8.51864ZM3.66677 8.25005H12.8334V10.0834H3.66677V8.25005ZM19.2501 14.6667V16.5001H17.4168V14.6667H19.2501ZM12.8334 8.25005C14.5352 8.25005 16.1673 8.92609 17.3707 10.1295C18.5741 11.3328 19.2501 12.9649 19.2501 14.6667H17.4168C17.4168 13.4511 16.9339 12.2854 16.0743 11.4258C15.2148 10.5663 14.049 10.0834 12.8334 10.0834V8.25005Z" fill="white"/>
+                    </svg>
+                </button>
+            </div>
+            <button class="button_style_two" id="changeRoot">
+                <p>Change Root</p>
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M27.88 6.08999C27.9575 5.90877 27.9985 5.71406 28.0007 5.51698C28.003 5.3199 27.9664 5.12431 27.893 4.94138C27.8196 4.75845 27.711 4.59176 27.5732 4.45082C27.4354 4.30989 27.2712 4.19747 27.09 4.11999C26.9088 4.04251 26.7141 4.00149 26.517 3.99926C26.3199 3.99703 26.1243 4.03364 25.9414 4.10699C25.5719 4.25515 25.2765 4.54399 25.12 4.90999L16.12 25.91C16.0425 26.0912 16.0015 26.2859 15.9993 26.483C15.997 26.6801 16.0336 26.8757 16.107 27.0586C16.1804 27.2415 16.289 27.4082 16.4268 27.5492C16.5646 27.6901 16.7288 27.8025 16.91 27.88C17.0912 27.9575 17.2859 27.9985 17.483 28.0007C17.6801 28.003 17.8757 27.9664 18.0586 27.893C18.2415 27.8196 18.4082 27.711 18.5492 27.5732C18.6901 27.4354 18.8025 27.2712 18.88 27.09L27.88 6.08999ZM10 23C10 23.394 9.9224 23.7841 9.77164 24.148C9.62087 24.512 9.3999 24.8427 9.12132 25.1213C8.84274 25.3999 8.51203 25.6209 8.14805 25.7716C7.78407 25.9224 7.39397 26 7 26C6.60603 26 6.21593 25.9224 5.85195 25.7716C5.48797 25.6209 5.15726 25.3999 4.87868 25.1213C4.6001 24.8427 4.37913 24.512 4.22836 24.148C4.0776 23.7841 4 23.394 4 23C4 22.2043 4.31607 21.4413 4.87868 20.8787C5.44129 20.3161 6.20435 20 7 20C7.79565 20 8.55871 20.3161 9.12132 20.8787C9.68393 21.4413 10 22.2043 10 23Z" fill="#757575"/>
+                </svg>
+            </button>
+        </div>
+        <div class="dirTable" id="dirTable">
+            
+        </div>
+        <!-- <iframe src="/media/shobhit/Entertainment Drive/animes/attack on titans/season 1/01 - To You, in 2000 Years.mkv" frameborder="0" width="100%"
+        height="300px"></iframe> -->
+        <!-- <embed src="/media/shobhit/Entertainment Drive/animes/attack on titans/season 1/01 - To You, in 2000 Years.mkv" type=""> -->
+    </div>
+    <div class="down"></div>
+</div>
+<div class="right">
+    <div class="top">
+        <div class="InformationStyle">
+            <p class="p-1">Storage Analysis</p>
+        </div>
+        <div class="storageBar" id="storageBar">
+            <!-- <div style="background-color: ; width: ;"></div> -->
+        </div>
+        <div style="margin-top: 50px;">
+            <div class="InfoStyleTwo">
+                <div class="totalColor" style="background-color: #7A306C;"></div>
+                <p id="totalStorage"></p>
+            </div>
+            <div class="InfoStyleTwo">
+                <div class="totalColor" style="background-color: #F962A1;"></div>
+                <p id="freeStorage"></p>
+            </div>
+        </div>
+    </div>
+    <div class="mid">
+        <div class="InformationStyle">
+            <p class="p-1">Connet</p>
+            <!-- <p class="p-2">:</p>
+            <p class="p-3">122.1212.1212.1221</p> -->
+        </div>
+        <div class="networkInfo">
+            <div class="NetworkSvg" id="NetworkSvg"></div>
+            <div class="InformationStyleTwo" id="ipInfo">
+            </div>
+        </div>
+    </div>
+    <div class="down"></div>
+</div>
+</div>

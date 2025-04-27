@@ -1,0 +1,24 @@
+.InformationStyle{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    text-align: center;
+    width: fit-content;
+}
+.InformationStyle .p-1,.InformationStyle .p-3{
+    width: max-content;
+    border: 1px solid #66666680;
+    border-radius: 7px;
+    padding: 6px 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-size: 14px;
+    height: min-content;
+}
+
+.InformationStyle .p-2{
+    padding: 3px 0;
+    height: min-content;
+}
+

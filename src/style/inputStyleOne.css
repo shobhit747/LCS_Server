@@ -1,0 +1,25 @@
+.styleInputOne{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    color: white;
+}
+.styleInputOne .p-1{
+    width: max-content;
+    border: 1px solid #666;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.styleInputOne .p-2{
+    padding: 10px 0;
+}
+.styleInputOne input{
+    outline: none;
+    border: 1px solid #666;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: white;
+}

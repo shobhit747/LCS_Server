@@ -1,0 +1,24 @@
+.button_style_two{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    padding: 5px 20px;
+    justify-self: center;
+    margin: auto;
+    background-color: #131212;
+    border: 5px solid #F9589B;
+    border-radius: 30px;
+}
+.button_style_two p{
+    background-color: transparent;
+    padding: 10px 20px 10px 0;
+}
+.button_style_two svg{
+    background-color: transparent;
+}
+.button_style_two svg path{
+    fill: #DCDCDC;
+}
+.button_style_two:hover{
+    background-color: #2A1920;
+}
