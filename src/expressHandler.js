@@ -253,7 +253,20 @@ app.get('/localServerCheck',(req,res,next)=>{
 })
 
 app.get('/download',requireAuthentication,(req,res)=>{
-
+    let fileToDownload = `${getCurrentPath(getRootPath(),req.session.stack)}/${req.body.fileName}`;
+    try{
+        if(fs.existsSync(fileToDownload)){
+            res.download(fileToDownload,req.body.fileName,(err)=>{
+                if(err){throw err};
+            })
+        }else{
+            res.sendStatus(404);
+        }
+    }catch(err){
+        console.log(err);
+        res.sendStatus(500);
+    }
+    
 });
 
 app.delete('/delete',requireAuthentication,(req,res)=>{
