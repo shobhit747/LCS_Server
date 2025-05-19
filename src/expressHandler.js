@@ -14,6 +14,7 @@ const https = require('https');
 const { default: axios } = require('axios');
 const qrcode = require('qrcode');
 const mime = require('mime-types');
+const { compareSync } = require('bcrypt');
 
 // Middleware to parse JSON
 app.use(express.json()); 
@@ -28,26 +29,59 @@ let sessionMiddleware = session({
     secret:sessionSecret,
     resave : false,
     saveUninitialized : true,
-    cookie : {secure : false}, // change it later
-    store : new session.MemoryStore()
+    cookie : {secure : false,httpOnly : true}, // change it later (secure : true, while using https)
+    store : new session.MemoryStore(),
 });
 
 app.use(sessionMiddleware)
-app.use((req, res, next) => {
-    if (!req.session.stack) {
-      req.session.stack = []; // Initialize stack for each session
-    }
-    console.log('store',req.headers.cookie);
+
+let USERS = [];
+
+function requireAuthentication(req,res,next){
+    console.log(req.session);
     
-    next();
-});
-  
-app.use('/file',express.static(getRootPath()))
+    if(!req.session.userId){
+        
+        if(req.method == 'POST' && req.body['passwrd'] != undefined){
+            let password = req.body['passwrd'];
+            let encryptedPassword = fs.readFileSync(path.resolve(__dirname,'..','config.json'));
+            encryptedPassword = JSON.parse(encryptedPassword);
+            encryptedPassword = encryptedPassword.password;
+            if(compareSync(password,encryptedPassword)){
+                console.log('Password matched');
+                let userId = Math.random().toString(36).substring(7);
+                USERS.push(userId);
+                req.session.userId = userId; // Assign random ID
+                if (!req.session.stack) {
+                    req.session.stack = []; // Initialize stack for each session
+                }
+                next();
+            }else{
+                req.session.destroy();
+                console.log('did not match');
+                res.sendStatus(401);
+            }
+        }
+    }else{
+        console.log('HAS SESSION :',req.session);
+        if(USERS.includes(req.session.userId)){            
+            next();
+        }else{
+            res.sendStatus(401);
+        }
+    }
+}
+
+app.use('/file',requireAuthentication,express.static(getRootPath()))
 
 function getRootPath(){
-    let rootPath = fs.readFileSync(path.resolve(__dirname,'..','config.json'));
-    rootPath = JSON.parse(rootPath);
-    return rootPath.rootPath;
+    try {
+        let rootPath = fs.readFileSync(path.resolve(__dirname,'..','config.json'));
+        rootPath = JSON.parse(rootPath);
+        return rootPath.rootPath;
+    } catch (error) {
+        return '.';
+    }
 }
 
 // let dirStack = [];
@@ -59,47 +93,8 @@ function getCurrentPath(rootPath,dirStack){
     return currentPath;
 }
 
-app.post('/file',(req,res)=>{
-    try{
-        
-        // let currentPath = req.body.path;
-        let currentPath = getCurrentPath(getRootPath(),req.session.stack);
-        console.log(currentPath);
-        
-        if (!fs.existsSync(currentPath)) {
-            return res.status(404).send('File not found');
-        }
-        ''.split('/')[''.length]
-        let stat = fs.statSync(currentPath);
-        let mimeType = mime.lookup(currentPath) || 'application/octet-stream';
-    
-        res.setHeader('Content-Disposition', `inline; filename="${currentPath.split('/')[currentPath.length - 1]}"`);
-        res.setHeader('Content-Type', mimeType);
-        res.setHeader('Content-Length', stat.size);
-        res.status(206)
-        let fileStream =  fs.createReadStream(currentPath);
-        fileStream.on('data',(chunk)=>{
-            res.write(chunk);
-        })
-        fileStream.on('error',(err)=>{
-            console.log(err);
-            
-        })
-        fileStream.on('end',()=>{
-            console.log('end');
-            
-        })
-    }catch(error){
-        console.log(error);
-        
-    }
-})
+app.post('/',requireAuthentication,(req,res)=>{
 
-app.get('/',(req,res)=>{
-    
-    if (!req.session.userId) {
-        req.session.userId = Math.random().toString(36).substring(7); // Assign random ID
-    }
     console.log(req.headers);
     
     let rootPath = getRootPath();
@@ -137,18 +132,15 @@ app.get('/',(req,res)=>{
         total : ((stats.bsize * stats.blocks)/1e9).toFixed(2),
         free : ((stats.bsize * stats.bfree)/1e9).toFixed(2)
     }
-    res.status(200).send({userId: req.session.userId,storageInfo,directoryInfo,currentPath : currentPath});
+    res.status(200).send({storageInfo,directoryInfo,currentPath : currentPath});
 })
 
 
-app.post('/getDirectory',(req,res) => {
+app.post('/getDirectory',requireAuthentication,(req,res) => {
     console.log(req.headers);
     console.log('cookie');
     
     
-    // if (!req.session.userId) {
-    //     req.session.userId = Math.random().toString(36).substring(7); // Assign random ID
-    // }
     if(req.body != undefined){
         if(Object.hasOwn(req.body,"cd")){
             let body = req.body;
@@ -236,11 +228,11 @@ app.post('/getDirectory',(req,res) => {
     }
 });
 
-app.post('/rename',(req,res)=>{
+app.post('/rename',requireAuthentication,(req,res)=>{
 
 });
 
-app.post('/upload',(req,res)=>{
+app.post('/upload',requireAuthentication,(req,res)=>{
     let filename = req.headers['content-disposition'].split('=')[1];
     let filePath = path.resolve(getCurrentPath(getRootPath(),req.session.stack),filename);
     let writeStream = fs.createWriteStream(filePath)
@@ -256,11 +248,15 @@ app.post('/upload',(req,res)=>{
     })
 });
 
-app.get('/download',(req,res)=>{
+app.get('/localServerCheck',(req,res,next)=>{
+    next();
+})
+
+app.get('/download',requireAuthentication,(req,res)=>{
 
 });
 
-app.delete('/delete',(req,res)=>{
+app.delete('/delete',requireAuthentication,(req,res)=>{
 
 });
 
@@ -269,9 +265,11 @@ app.delete('/delete',(req,res)=>{
 
 let server = null;
 function serverStatus(port,handleErr){
-    http.get(`http://localhost:${port}`,() => {
+    http.get(`http://localhost:${port}/localServerCheck`,(res)=>{        
         handleErr(null);
     }).on('error',(err)=>{
+        console.log('status error : ',err);
+        
         handleErr(err);
     })
 }
@@ -289,6 +287,7 @@ const getLocalIP = () => {
     }
     return 'localhost'; // Fallback if no network IP is found
 };
+
 const getPublicIP = async () => {
     try {
         const response = await axios.get('https://api64.ipify.org?format=json');

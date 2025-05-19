@@ -11,6 +11,7 @@ window.electronAPI.receive('serverStatusReply',(server)=>{
     }else{
         changeSection('./startCreateServer.html','mainSection');
         shutDownBtn.style.display = 'none';
+        console.log('Server Status Error : ',server.error);
         
     }
 })
